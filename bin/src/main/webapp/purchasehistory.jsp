@@ -11,24 +11,17 @@
 </head>
 <body>
 
-<h1 align="center">Display Users</h1>
+<h1 align="center">Purchase History</h1>
 
-<%List<User> u=(List<User>)request.getAttribute("list"); %>
-
-<h1 align="center">Search Users by Email</h1>
-<form action="searchusers">
-User email<input type="text" name="email"><br>
-<input type="submit"> 
-</form>
-
+<%List<PurchaseHistory> ph=(List<PurchaseHistory>)request.getAttribute("list"); %>
 <table align="center" border="1">
-<tr><th>name</th><th>email</th><th>password</th></tr>
-<%if(u != null){ %>
-<%for(User uu:u){ %>
-<tr><td><%=uu.getName() %></td><td><%=uu.getEmail() %></td><td><%=uu.getPassword() %></td></tr>
+<tr><th>category</th><th>size</th><th>name</th><th>email</th><th>date</th></tr>
+<%if(ph != null){ %>
+<%for(PurchaseHistory phph:ph){ %>
+<tr><td><%=phph.getCategory()%></td><td><%=phph.getSize()%></td><td><%=phph.getName()%></td><td><%=phph.getEmail()%></td><td><%=phph.getDate()%></td>
+</tr>
 <%} %>
 <%} %>
-</table>
 
 <form align = "center" action="adminback">
 <button name = "Back" type = "submit" >Back</button>

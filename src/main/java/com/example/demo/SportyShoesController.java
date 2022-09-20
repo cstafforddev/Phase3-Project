@@ -3,6 +3,7 @@ package com.example.demo;
 
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -135,6 +136,24 @@ public class SportyShoesController {
 		List<User> userList=userdao.getAll();
 		mv.setViewName("/displayusers.jsp");
 		mv.addObject("list",userList);
+		return mv;
+
+	}
+	//----------------------------------------------------------------------------------------------------------------
+	@RequestMapping("/searchusers")
+	public ModelAndView searchUsers(HttpServletRequest request,HttpServletResponse response) {
+		ModelAndView mv=new ModelAndView();	
+		List<User> userList=userdao.getAll();
+		List<User> filteredList = new ArrayList();
+		User u = new User();
+		u.setEmail(request.getParameter("email"));
+		for(User uu:userList) {
+			if(uu.getEmail().equals(u.getEmail())){
+				filteredList.add(uu);
+			}
+		}
+		mv.setViewName("/displayfilteredusers.jsp");
+		mv.addObject("list",filteredList);
 		return mv;
 
 	}

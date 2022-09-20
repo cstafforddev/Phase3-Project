@@ -11,15 +11,9 @@
 </head>
 <body>
 
-<h1 align="center">Display Users</h1>
+<h1 align="center">Display Users by Email</h1>
 
 <%List<User> u=(List<User>)request.getAttribute("list"); %>
-
-<h1 align="center">Search Users by Email</h1>
-<form action="searchusers">
-User email<input type="text" name="email"><br>
-<input type="submit"> 
-</form>
 
 <table align="center" border="1">
 <tr><th>name</th><th>email</th><th>password</th></tr>
